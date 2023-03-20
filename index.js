@@ -44,7 +44,7 @@ app.post('/upload', authCheck, upload.array('images'), (req, res) => {
 
 app.post('/auth/registration', adminRegister);
 app.post('/auth/login', adminLogin);
-app.get('/auth/getMe', adminGetMe)
+app.get('/auth/getMe', authCheck, adminGetMe)
 
 app.get('/aboutMe', getAboutMe);
 app.post('/aboutMe', authCheck, setAboutMe);
