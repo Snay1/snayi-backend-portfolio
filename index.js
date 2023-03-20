@@ -5,7 +5,7 @@ import cors from 'cors';
 import multer from "multer";
 
 import { deleteWork, getWorks, uploadWork, updateWork } from "./methods/works/index.js";
-import { adminLogin, adminRegister } from "./methods/admin/index.js";
+import { adminLogin, adminRegister, adminGetMe } from "./methods/admin/index.js";
 import { authCheck } from "./handlers/index.js";
 import { sendSecretCode } from "./methods/secretCode/index.js";
 import { deleteTechnology, getTechnologies, uploadTechnology } from "./methods/technologies/index.js";
@@ -42,8 +42,9 @@ app.post('/upload', authCheck, upload.array('images'), (req, res) => {
     });
 });
 
-app.post('/registration', adminRegister);
-app.post('/login', adminLogin);
+app.post('/auth/registration', adminRegister);
+app.post('/auth/login', adminLogin);
+app.get('/auth/getMe', adminGetMe)
 
 app.get('/aboutMe', getAboutMe);
 app.post('/aboutMe', authCheck, setAboutMe);
