@@ -1,0 +1,1 @@
+export { default as authCheck } from './authCheck.js';
