@@ -38,7 +38,7 @@ app.use('/uploads', express.static('uploads'));
 
 app.post('/upload', authCheck, upload.array('images'), (req, res) => {
     res.json({
-        urls: [req.files.map(file => file.originalname)]
+        urls: [...req.files.map(file => file.originalname)]
     });
 });
 
